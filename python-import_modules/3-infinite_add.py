@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    leche = len(argv)
-    azucar = 0
-    for i in range(1, leche):
-        azucar += int(argv[i])
-        print("{:d}".format(azucar))
+    leche = sys.argv[1:]
+    azucar = sum(int(arg) for arg in leche)
+    print(azucar)
