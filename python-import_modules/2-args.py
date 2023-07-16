@@ -1,16 +1,14 @@
 #!/usr/bin/python3
+from sys import argv
+
 if __name__ == "__main__":
-
-    import sys
-
-    args = sys.argv[1:]
-    hueso = len(args)
-
+    hueso = len(argv) - 1
     if hueso == 0:
-        print("{} arguments.".format(hueso))
+        print("{}".format("0 arguments."))
     elif hueso == 1:
-        print("{} argument:".format(hueso))
+        print("{}".format("1 argument:"))
+        print("1: {}".format(argv[1]))
     else:
-        print("{} arguments:".format(hueso))
-        for i, arg in enumerate(args, 1):
-            print("{}: {}".format(i, arg))
+        print("{:d} {}".format(hueso, "arguments:"))
+        for i in range(1, hueso + 1):
+            print("{:d}: {}".format(i, argv[i]))
