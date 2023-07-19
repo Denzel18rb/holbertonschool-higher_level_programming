@@ -1,4 +1,5 @@
 #!/usr/bin/python3
-class Square:
-    my_square = "{}"
+my_square = "{}"
+
+class Square():
     pass
