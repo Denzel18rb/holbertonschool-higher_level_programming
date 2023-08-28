@@ -33,7 +33,3 @@ if __name__ == "__main__":
 
     username, password, database_name = sys.argv[1], sys.argv[2], sys.argv[3]
     list_cities(username, password, database_name)
-
-
-    username, password, database_name = sys.argv[1], sys.argv[2], sys.argv[3]
-    list_cities(username, password, database_name)
