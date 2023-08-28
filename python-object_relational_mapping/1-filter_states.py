@@ -1,5 +1,13 @@
 #!/usr/bin/python3
-"""lists all states from the database hbtn_0e_0_usa"""
+"""MySQL State List Module
+
+This module connects to a MySQL database and lists states whose names start with 'N'
+from the specified database.
+
+Usage:
+    $ python3 state_list.py <username> <password> <database>
+
+"""
 
 import sys
 import MySQLdb
