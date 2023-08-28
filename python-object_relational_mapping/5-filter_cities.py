@@ -1,39 +1,29 @@
 #!/usr/bin/python3
 """ Lists all states that matches the argument 4"""
-import MySQLdb
 import sys
+import MySQLdb
 
-def list_cities_by_state(username, password, database_name, state_name):
-    try:
-        db = MySQLdb.connect(host="localhost", port=3306, 
-                             user=username, passwd=password, db=database_name)
+if __name__ == '__main__':
+    user = sys.argv[1]
+    passwd = sys.argv[2]
+    db = sys.argv[3]
+    state_name = sys.argv[4]
+    HOST = 'localhost'
 
-        cursor = db.cursor()
+    db = MySQLdb.connect(host=HOST, user=user, passwd=passwd, db=db, port=3306)
 
-        query = "SELECT cities.id, cities.name FROM cities " \
-                "JOIN states ON cities.state_id = states.id " \
-                "WHERE states.name = %s " \
-                "ORDER BY cities.id ASC"
+    pointer = db.cursor()
+    query = ("SELECT cities.id, cities.name, states.name FROM cities \
+    JOIN states ON cities.state_id = states.id \
+    WHERE states.name = %s \
+    ORDER BY cities.id ASC; ")
+    pointer.execute(query, (state_name, ))
+    cities = pointer.fetchall()
 
-        cursor.execute(query, (state_name,))
+    city_names = [city[1] for city in cities]
+    cities_string = ', '.join(city_names)
 
-        cities = cursor.fetchall()
-        for city in cities:
-            print(city)
+    print(cities_string)
 
-        cursor.close()
-        db.close()
-
-    except MySQLdb.Error as e:
-        print("MySQL Error:", e)
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> 
-              <database_name> <state_name>")
-        sys.exit(1)
-
-    username, password, database_name, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-    list_cities_by_state(username, password, database_name, state_name)
+    pointer.close()
+    db.close()
