@@ -27,7 +27,6 @@ if __name__ == "__main__":
         query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
 =======
         )
-    
         cur = conn.cursor()
         query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
 >>>>>>> aacb4d93a2c3db63b9dff5b414be9bc117a2d32d
