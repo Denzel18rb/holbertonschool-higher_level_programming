@@ -5,7 +5,8 @@ import sys
 
 def list_cities_by_state(username, password, database_name, state_name):
     try:
-        db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database_name)
+        db = MySQLdb.connect(host="localhost", port=3306, 
+                             user=username, passwd=password, db=database_name)
 
         cursor = db.cursor()
 
@@ -27,9 +28,11 @@ def list_cities_by_state(username, password, database_name, state_name):
         print("MySQL Error:", e)
         sys.exit(1)
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> <database_name> <state_name>")
+        print("Usage: python script.py <username> <password> 
+              <database_name> <state_name>")
         sys.exit(1)
 
     username, password, database_name, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
