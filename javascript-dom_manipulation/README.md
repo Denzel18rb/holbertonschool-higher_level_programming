@@ -1,1 +1,0 @@
-Project: JavaScript DOM manipulation
